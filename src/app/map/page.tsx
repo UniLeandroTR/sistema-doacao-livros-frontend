@@ -30,8 +30,8 @@ const MEETUP_POINTS: MeetupPoint[] = [
     verified: true,
     donations: 145,
     favorite: true,
-    lat: -10.1889,
-    lng: -48.3317
+    lat: -10.1868,
+    lng: -48.3337
   },
   {
     id: 2,
@@ -40,38 +40,38 @@ const MEETUP_POINTS: MeetupPoint[] = [
     verified: true,
     donations: 310,
     favorite: true,
-    lat: -10.1689,
-    lng: -48.3517
+    lat: -10.199098619299564,
+    lng: -48.33191404417664
   },
   {
     id: 3,
-    name: 'Biblioteca Pública de Palmas',
+    name: 'Biblioteca Prof. José Torquato Carolino',
     type: 'Biblioteca',
     verified: true,
     donations: 89,
     favorite: false,
-    lat: -10.1489,
-    lng: -48.3117
+    lat: -10.177616340662663,
+    lng: -48.36201193327465
   },
   {
     id: 4,
-    name: 'Escola Municipal Santos Dumont',
-    type: 'Escola Pública',
+    name: 'Biblioteca Unitins',
+    type: 'Biblioteca',
     verified: false,
     donations: 12,
     favorite: false,
-    lat: -10.1989,
-    lng: -48.3617
+    lat: -10.182091098202681,
+    lng: -48.360559962146446
   },
   {
     id: 5,
-    name: 'Parque Cesamar',
-    type: 'Parque',
+    name: 'Biblioteca Pública de Taquaralto',
+    type: 'Biblioteca',
     verified: true,
     donations: 56,
     favorite: false,
-    lat: -10.1589,
-    lng: -48.3717
+    lat: -10.3350261984605,
+    lng: -48.28369490259548
   },
 ]
 
