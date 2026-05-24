@@ -16,7 +16,8 @@ const SAMPLE_BOOKS = [
     donor: 'Maria Silva',
     donorRating: 4.8,
     category: 'Literatura Brasileira',
-    distance: '2.5 km'
+    distance: '2.5 km',
+    imageUrl: '/covers/dom-casmurro.jpg'
   },
   {
     id: 2,
@@ -27,7 +28,8 @@ const SAMPLE_BOOKS = [
     donor: 'João Santos',
     donorRating: 4.2,
     category: 'Infantil',
-    distance: '5.8 km'
+    distance: '5.8 km',
+    imageUrl: '/covers/pequeno-principe.jpg'
   },
   {
     id: 3,
@@ -38,7 +40,8 @@ const SAMPLE_BOOKS = [
     donor: 'Ana Costa',
     donorRating: 5.0,
     category: 'Ficção',
-    distance: '1.2 km'
+    distance: '1.2 km',
+    imageUrl: '/covers/1984.jpg'
   },
   {
     id: 4,
@@ -49,7 +52,8 @@ const SAMPLE_BOOKS = [
     donor: 'Pedro Oliveira',
     donorRating: 3.5,
     category: 'Não-ficção',
-    distance: '3.7 km'
+    distance: '3.7 km',
+    imageUrl: '/covers/sapiens.jpg'
   },
   {
     id: 5,
@@ -60,7 +64,8 @@ const SAMPLE_BOOKS = [
     donor: 'Carla Mendes',
     donorRating: 4.9,
     category: 'Fantasia',
-    distance: '4.1 km'
+    distance: '4.1 km',
+    imageUrl: '/covers/harry-potter.jpg'
   },
   {
     id: 6,
@@ -71,7 +76,20 @@ const SAMPLE_BOOKS = [
     donor: 'Escola Municipal',
     donorRating: 4.5,
     category: 'Didático',
-    distance: '6.3 km'
+    distance: '6.3 km',
+    imageUrl: '/covers/matematica-basica.jpg'
+  },
+  {
+    id: 7,
+    title: 'BLAME!',
+    author: 'Tsutomu Nihei',
+    condition: 'Bom',
+    location: 'Belo Horizonte, MG',
+    donor: 'Ana Costa',
+    donorRating: 5.0,
+    category: 'Ficção',
+    distance: '1.2 km',
+    imageUrl: '/covers/blame.jpg'
   }
 ]
 

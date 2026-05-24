@@ -31,9 +31,9 @@ export function BookCard({
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       {/* Image Section */}
-      <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center overflow-hidden">
+      <div className="h-56 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center overflow-hidden p-3">
         {imageUrl ? (
-          <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+          <img src={imageUrl} alt={title} className="h-full w-full object-contain" />
         ) : (
           <div className="text-6xl">📚</div>
         )}

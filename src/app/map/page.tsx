@@ -1,10 +1,13 @@
 'use client'
 
-import { MapPin, Navigation, Filter, Layers, CheckCircle, Heart, Star } from 'lucide-react'
+import { MapPin, Navigation, Filter, Layers, CheckCircle, Heart } from 'lucide-react'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+
+const Map = dynamic(() => import('@/components/shared/map-component'), { ssr: false })
 
 interface MeetupPoint {
   id: number
@@ -17,36 +20,38 @@ interface MeetupPoint {
   lng: number
 }
 
+const PALMAS_CENTER: [number, number] = [-10.1689, -48.3317]
+
 const MEETUP_POINTS: MeetupPoint[] = [
   {
     id: 1,
-    name: 'Praça da Sé',
+    name: 'Praça dos Girassóis',
     type: 'Praça Pública',
     verified: true,
     donations: 145,
     favorite: true,
-    lat: -23.550520,
-    lng: -46.633308
+    lat: -10.1889,
+    lng: -48.3317
   },
   {
     id: 2,
-    name: 'Centro Cultural São Paulo',
+    name: 'Centro Cultural de Palmas',
     type: 'Centro Cultural',
     verified: true,
     donations: 310,
     favorite: true,
-    lat: -23.560520,
-    lng: -46.643308
+    lat: -10.1689,
+    lng: -48.3517
   },
   {
     id: 3,
-    name: 'Biblioteca Mário de Andrade',
+    name: 'Biblioteca Pública de Palmas',
     type: 'Biblioteca',
     verified: true,
     donations: 89,
     favorite: false,
-    lat: -23.540520,
-    lng: -46.623308
+    lat: -10.1489,
+    lng: -48.3117
   },
   {
     id: 4,
@@ -55,18 +60,18 @@ const MEETUP_POINTS: MeetupPoint[] = [
     verified: false,
     donations: 12,
     favorite: false,
-    lat: -23.570520,
-    lng: -46.653308
+    lat: -10.1989,
+    lng: -48.3617
   },
   {
     id: 5,
-    name: 'Parque Ibirapuera - Portão 3',
+    name: 'Parque Cesamar',
     type: 'Parque',
     verified: true,
     donations: 56,
     favorite: false,
-    lat: -23.580520,
-    lng: -46.663308
+    lat: -10.1589,
+    lng: -48.3717
   },
 ]
 
@@ -96,41 +101,16 @@ export default function MapPage() {
         {/* Map Area */}
         <div className="lg:col-span-2">
           <Card className="overflow-hidden">
-            {/* Mock Map */}
-            <div className="relative bg-gradient-to-br from-blue-100 via-green-100 to-purple-100 h-[600px] flex items-center justify-center border-b border-border">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Mapa Interativo</h3>
-                <p className="text-muted-foreground max-w-md">
-                  Visualização geolocalizada de pontos de encontro na sua região
-                </p>
-              </div>
-
-              {/* Mock Markers */}
-              <div className="absolute inset-0 pointer-events-none">
-                {MEETUP_POINTS.map((point) => (
-                  <div
-                    key={point.id}
-                    className="absolute transform -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
-                    style={{
-                      left: `${30 + (point.id * 12) % 40}%`,
-                      top: `${20 + (point.id * 18) % 60}%`,
-                    }}
-                  >
-                    {favorites.includes(point.id) ? (
-                      <div className="relative">
-                        <div className="absolute inset-0 animate-pulse rounded-full bg-yellow-400/20"></div>
-                        <Star className="w-8 h-8 text-yellow-500 fill-yellow-500 drop-shadow-lg" />
-                      </div>
-                    ) : (
-                      <MapPin className="w-8 h-8 text-primary drop-shadow-lg" />
-                    )}
-                  </div>
-                ))}
-              </div>
+            {/* Real Map */}
+            <div className="relative h-[600px] border-b border-border">
+              <Map
+                points={MEETUP_POINTS}
+                center={PALMAS_CENTER}
+                zoom={13}
+              />
 
               {/* Search Radius Control */}
-              <div className="absolute top-4 left-4 bg-white rounded-lg p-4 shadow-lg">
+              <div className="absolute top-4 left-4 z-[1000] bg-white rounded-lg p-4 shadow-lg">
                 <label className="text-xs text-muted-foreground block mb-2">
                   Raio de busca
                 </label>
@@ -147,7 +127,7 @@ export default function MapPage() {
               </div>
 
               {/* Location Buttons */}
-              <div className="absolute top-4 right-4 space-y-2">
+              <div className="absolute top-4 right-4 z-[1000] space-y-2">
                 <Button size="sm" className="flex gap-2">
                   <Navigation className="w-4 h-4" />
                   Minha Localização
