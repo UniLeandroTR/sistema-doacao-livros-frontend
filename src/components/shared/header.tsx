@@ -2,6 +2,7 @@
 
 import { BookHeart, Menu, User } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 
@@ -9,8 +10,16 @@ interface HeaderProps {
   activeTab?: string
 }
 
-export function Header({ activeTab = 'home' }: HeaderProps) {
+export function Header({ activeTab = usePathname() }: HeaderProps) {
+  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    return pathname.startsWith(href)
+  }
 
   const navItems = [
     { href: '/', label: 'Início' },
@@ -40,7 +49,7 @@ export function Header({ activeTab = 'home' }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 className={`px-4 py-2 rounded-lg transition-colors ${
-                  activeTab === item.href.split('/')[1] || (item.href === '/' && activeTab === 'home')
+                  isActive(item.href)
                     ? 'bg-primary text-primary-foreground'
                     : 'hover:bg-accent text-foreground'
                 }`}
